@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -140,14 +141,14 @@ public class SimpleDataListAdapter extends BaseAdapter<SimpleDataModel> {
 
         FrameLayout loadingFrameLayout;
         RelativeLayout errorRelativeLayout;
-        ImageView loadingImageView;
+        ProgressBar loadingImageView;
         Button reloadButton;
 
         public FooterViewHolder(View itemView) {
             super(itemView);
             loadingFrameLayout = (FrameLayout) itemView.findViewById(R.id.loading_fl);
             errorRelativeLayout = (RelativeLayout) itemView.findViewById(R.id.error_rl);
-            loadingImageView = (ImageView) itemView.findViewById(R.id.loading_iv);
+            loadingImageView = (ProgressBar) itemView.findViewById(R.id.progressLoading);
             reloadButton = (Button) itemView.findViewById(R.id.reload_btn);
         }
     }

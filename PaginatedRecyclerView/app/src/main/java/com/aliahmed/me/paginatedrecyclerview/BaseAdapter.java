@@ -138,14 +138,22 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
     public void updateFooter(FooterType footerType) {
         switch (footerType) {
             case ERROR:
-                displayLoadMoreFooter();
+                displayErrorFooter();
                 break;
             case LOAD_MORE:
-                displayErrorFooter();
+                displayLoadMoreFooter();
                 break;
             default:
                 break;
         }
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public void setOnReloadClickListener(OnReloadClickListener onReloadClickListener) {
+        this.onReloadClickListener = onReloadClickListener;
     }
 
     public interface OnItemClickListener {
