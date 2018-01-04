@@ -2,6 +2,7 @@ package com.aliahmed.me.paginatedrecyclerview;
 
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -128,9 +129,12 @@ public class SimpleDataListAdapter extends BaseAdapter<SimpleDataModel> {
         }
 
         private void bind(SimpleDataModel simpleDataModel) {
-            txtName.setText(simpleDataModel.getName());
-            txtMobile.setText(simpleDataModel.getMobileNumber());
-            txtDept.setText(simpleDataModel.getDept());
+            if (!TextUtils.isEmpty(simpleDataModel.getName()))
+                txtName.setText(simpleDataModel.getName());
+            if (!TextUtils.isEmpty(simpleDataModel.getMobileNumber()))
+                txtMobile.setText(simpleDataModel.getMobileNumber());
+            if (!TextUtils.isEmpty(simpleDataModel.getDept()))
+                txtDept.setText(simpleDataModel.getDept());
 
             int adapterPosition = getAdapterPosition();
             ViewCompat.setTransitionName(txtName, "My Transition " + adapterPosition);

@@ -64,30 +64,33 @@ class MainActivity extends AppCompatActivity implements SimpleDataListAdapter.On
         simpleDataModel = new SimpleDataModel();
         simpleDataModels = new ArrayList<>();
         layoutManager = new LinearLayoutManager(this);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        simpleDataModel.setName("Ali Ahmed");
+        simpleDataModel.setMobileNumber("aliahmedaiub@gmail.com");
+        simpleDataModel.setDept("Software Engineer");
+
         simpleDataListAdapter = new SimpleDataListAdapter();
+        setDummyData();
         simpleDataListAdapter.addFooter();
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setAdapter(simpleDataListAdapter);
+        mRecyclerView.addOnScrollListener(recyclerViwListener);
 
         //invoke click listeners
         simpleDataListAdapter.setOnItemClickListener(this);
         simpleDataListAdapter.setOnReloadClickListener(this);
-
-        //set recycler view data
-        setDummyData();
-        simpleDataListAdapter.addAllItem(simpleDataModels);
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setAdapter(simpleDataListAdapter);
-        mRecyclerView.addOnScrollListener(recyclerViwListener);
     }
 
     private void setDummyData() {
         isLoading = false;
         for (int i = 0; i < 2; i++) {
-            SimpleDataModel simpleDataModel = new SimpleDataModel();
-            simpleDataModel.setName("Ali Ahmed");
-            simpleDataModel.setMobileNumber("+8801681849871");
-
-            simpleDataModel.setDept("Software Engineer");
-            simpleDataModels.add(simpleDataModel);
+            simpleDataListAdapter.addItem(simpleDataModel);
         }
     }
 
