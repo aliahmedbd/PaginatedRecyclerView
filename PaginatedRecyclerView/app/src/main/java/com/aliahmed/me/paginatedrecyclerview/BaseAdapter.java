@@ -30,13 +30,13 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         switch (getItemViewType(position)) {
             case HEADER_VIEW:
-                bindHeaderViewHolder(holder);
+                bindHeaderViewHolder(holder, position);
                 break;
             case ITEM_VIEW:
-                bindItemViewHolder(holder);
+                bindItemViewHolder(holder, position);
                 break;
             case FOOTER_VIEW:
-                bindFooterViewHolder(holder);
+                bindFooterViewHolder(holder, position);
                 break;
             default:
                 break;
@@ -68,11 +68,11 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<RecyclerView.V
 
     protected abstract RecyclerView.ViewHolder createFooterViewHolder(ViewGroup parent);
 
-    protected abstract void bindHeaderViewHolder(RecyclerView.ViewHolder viewHolder);
+    protected abstract void bindHeaderViewHolder(RecyclerView.ViewHolder viewHolder, int position);
 
-    protected abstract void bindItemViewHolder(RecyclerView.ViewHolder viewHolder);
+    protected abstract void bindItemViewHolder(RecyclerView.ViewHolder viewHolder, int position);
 
-    protected abstract void bindFooterViewHolder(RecyclerView.ViewHolder viewHolder);
+    protected abstract void bindFooterViewHolder(RecyclerView.ViewHolder viewHolder, int position);
 
     protected abstract void displayLoadMoreFooter();
 
